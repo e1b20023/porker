@@ -16,14 +16,9 @@ import org.springframework.context.annotation.Bean;
 public class PokerAuthConfiguration {
   @Bean
   public InMemoryUserDetailsManager userDetailsService() {
-    // このクラスの下部にあるPasswordEncoderを利用して，ユーザのビルダ（ログインするユーザを作成するオブジェクト）を作成する
+
     UserBuilder users = User.builder();
 
-    // UserBuilder usersにユーザ名，パスワード，ロールを指定してbuildする
-    // このときパスワードはBCryptでハッシュ化されている．
-    // ハッシュ化されたパスワードを得るには，この授業のbashターミナルで下記のように末尾にユーザ名とパスワードを指定すると良い(要VPN)
-    // $ sshrun htpasswd -nbBC 10 user1 p@ss
-    // ロールを複数追加することもできる
     UserDetails user1 = users
         .username("user1")
         .password("$2y$10$NuE6pUNnNdUMUc7g0MIg9.Tw6kwbRXJ7tDPxrha16PNFNxkjEXHk.")
