@@ -64,3 +64,14 @@ INSERT INTO poker4 (num,suit) VALUES (13,'heart');
 INSERT INTO poker4 (num,suit) VALUES (13,'dia');
 INSERT INTO poker4 (num,suit) VALUES (13,'club');
 INSERT INTO poker4 (num,suit) VALUES (13,'spade');
+
+
+INSERT INTO score (hand,score) VALUES ('ロイヤルストレートフラッシュ',9);
+INSERT INTO score (hand,score) VALUES ('ストレートフラッシュ',8);
+INSERT INTO score (hand,score) VALUES ('フォーカード',7);
+INSERT INTO score (hand,score) VALUES ('フルハウス',6);
+INSERT INTO score (hand,score) VALUES ('フラッシュ',5);
+INSERT INTO score (hand,score) VALUES ('ストレート',4);
+INSERT INTO score (hand,score) VALUES ('スリーカード',3);
+INSERT INTO score (hand,score) VALUES ('ツーペア',2);
+INSERT INTO score (hand,score) VALUES ('ワンペア',1);
