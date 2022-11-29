@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import team6.porker.model.Deck;
+
 @Controller
 public class PokerController {
 
@@ -19,6 +21,12 @@ public class PokerController {
 
     model.addAttribute("name", name);
     return "start.html";
+  }
+
+  @GetMapping("/poker4")
+  public String poker4() {
+    Deck x = new Deck();
+    return "poker4.html";
   }
 
 }
