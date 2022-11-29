@@ -75,3 +75,4 @@ INSERT INTO score (hand,score) VALUES ('ストレート',4);
 INSERT INTO score (hand,score) VALUES ('スリーカード',3);
 INSERT INTO score (hand,score) VALUES ('ツーペア',2);
 INSERT INTO score (hand,score) VALUES ('ワンペア',1);
+INSERT INTO score (hand,score) VALUES ('ノーペア',0);
