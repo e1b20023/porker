@@ -2,7 +2,14 @@
 <html>
 
 <body>
-  <a></a>
+  <p th:if="${ids}">
+
+  <div th:each="id,stat:${ids}">
+    <ul>
+      <li>[[${id}]]</li>
+    </ul>
+  </div>
+  </p>
 </body>
 
 </html>
