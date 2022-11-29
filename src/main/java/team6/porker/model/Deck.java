@@ -1,20 +1,18 @@
 package team6.porker.model;
 
 public class Deck {
-  int deck[];
+  int deckid;
 
-  public Deck() {
-    for (int i = 0; i < 52; i++) {
-      deck[i] = i + 1;
-    }
+  public Deck(int deckid) {
+    this.deckid = deckid;
   }
 
-  public int[] getDeck() {
-    return deck;
+  public int getDeckid() {
+    return deckid;
   }
 
-  public void setDeck(int[] deck) {
-    this.deck = deck;
+  public void setDeckid(int deckid) {
+    this.deckid = deckid;
   }
 
 }
