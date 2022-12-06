@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import team6.porker.model.DeckMapper;
-
+import team6.porker.model.Player;
 import team6.porker.model.Deck;
 
 @Controller
@@ -33,7 +33,9 @@ public class PokerController {
   @GetMapping("/poker4")
   public String poker4(ModelMap model) {
     ArrayList<Deck> ids = DeckMapper.selectAllByDeckid();
-    model.addAttribute("ids", ids);
+    Player user1 = new Player();
+    user1.Distribute(ids);
+    model.addAttribute("Hands", user1.getHand());
     return "poker4.html";
   }
 
