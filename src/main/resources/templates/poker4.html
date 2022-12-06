@@ -2,12 +2,10 @@
 <html>
 
 <body>
-  <p th:if="${ids}">
+  <p th:if="${Hands}">
 
-  <div th:each="id,stat:${ids}">
-    <ul>
-      <li>[[${id}]]</li>
-    </ul>
+  <div th:each="Hand,stat:${Hands}">
+    [[${Hand}]]
   </div>
   </p>
 </body>
