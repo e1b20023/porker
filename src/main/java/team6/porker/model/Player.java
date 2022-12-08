@@ -14,7 +14,6 @@ public class Player {
     for (int i = 0; i < 5; i++) {
       int tmp = deck.get(i).getDeckid();
       this.hand.add(tmp);
-      // System.out.println(hand.get(i));
     }
   }
 
