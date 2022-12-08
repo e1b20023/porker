@@ -35,7 +35,8 @@ public class PokerController {
     ArrayList<Deck> ids = DeckMapper.selectAllByDeckid();
     Player user1 = new Player();
     user1.Distribute(ids);
-    model.addAttribute("Hands", user1.getHand());
+    System.out.println(user1.getHand());
+    model.addAttribute("Hands", user1);
     return "poker4.html";
   }
 
