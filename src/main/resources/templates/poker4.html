@@ -5,7 +5,9 @@
   <p th:if="${Hands}">
 
   <div th:each="Hand,stat:${Hands}">
-    [[${Hand}]]
+    <ul>
+      <li>[[${Hand.hand}]]</li>
+    </ul>
   </div>
   </p>
 </body>

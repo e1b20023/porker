@@ -1,30 +1,28 @@
 package team6.porker.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Player {
-  int hand[];
+  ArrayList<Integer> hand = new ArrayList<Integer>();
   int score;
 
-  public static Integer[] removeLastElement(Integer[] arr) {
-    return Arrays.copyOf(arr, arr.length - 1);
+  public Player() {
   }
 
-  public void Distribute(ArrayList<Deck> DECK) {
-    Integer[] deck=DECK.toArray(new Integer[DECK.size()]);
+  public void Distribute(ArrayList<Deck> deck) {
 
     for (int i = 0; i < 5; i++) {
-      this.hand[i] = deck[deck.length];
-      deck=removeLastElement(deck);
+      int tmp = deck.get(i).getDeckid();
+      this.hand.add(tmp);
+      // System.out.println(hand.get(i));
     }
   }
 
-  public int[] getHand() {
+  public ArrayList<Integer> getHand() {
     return hand;
   }
 
-  public void setHand(int[] hand) {
+  public void setHand(ArrayList<Integer> hand) {
     this.hand = hand;
   }
 
