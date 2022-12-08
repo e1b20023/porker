@@ -33,6 +33,12 @@ public class PokerController {
   @GetMapping("/poker4")
   public String poker4(ModelMap model) {
     ArrayList<Deck> ids = DeckMapper.selectAllByDeckid();
+    for (int i = 0; i < ids.size(); ++i) {
+      int rnd = (int) (Math.random() * (double) ids.size());
+      int w = ids.get(i).getDeckid();
+      ids.get(i).setDeckid(ids.get(rnd).getDeckid());
+      ids.get(rnd).setDeckid(w);
+    }
     Player user1 = new Player();
     user1.Distribute(ids);
     System.out.println(user1.getHand());
