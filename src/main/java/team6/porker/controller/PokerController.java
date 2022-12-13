@@ -14,6 +14,7 @@ import team6.porker.model.Deck;
 
 @Controller
 public class PokerController {
+  Player user1 = new Player();
 
   @Autowired
   DeckMapper DeckMapper;
@@ -31,19 +32,32 @@ public class PokerController {
   }
 
   @GetMapping("/poker4")
-  public String poker4(ModelMap model) {
+  public String poker41(ModelMap model) {
     ArrayList<Deck> ids = DeckMapper.selectAllByDeckid();
+    //user1.getHand().clear();
     for (int i = 0; i < ids.size(); ++i) {
       int rnd = (int) (Math.random() * (double) ids.size());
       int w = ids.get(i).getDeckid();
       ids.get(i).setDeckid(ids.get(rnd).getDeckid());
       ids.get(rnd).setDeckid(w);
     }
-    Player user1 = new Player();
+    //Player user1 = new Player();
     user1.Distribute(ids);
-    System.out.println(user1.getHand());
+    for (int i = 0; i < 5; i++) {
+      //user1copy.add(user1.get(i).getHand());
+    }
+
     model.addAttribute("Hands", user1);
     return "poker4.html";
   }
 
+  @PostMapping("/poker4")
+  public String poker42(ModelMap model) {
+    int result;
+
+    result = user1.getPokerHand(user1.getHand());
+    String handname = user1.HandName(result);
+    model.addAttribute("handname", handname);
+    return "poker4.html";
+  }
 }
