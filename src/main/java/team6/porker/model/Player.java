@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
   ArrayList<Integer> hand = new ArrayList<Integer>();
-  int score;
+  int score = 0;
 
   // エラー
   static final int ERROR = 0;
@@ -240,24 +240,34 @@ public class Player {
 
   public String HandName(int result) {
     if (result == 1) {
+      score += 1000;
       return "ロイヤルストレートフラッシュ";
     } else if (result == 2) {
+      score += 100;
       return "ストレートフラッシュ";
     } else if (result == 3) {
+      score += 50;
       return "フォーカード";
     } else if (result == 4) {
+      score += 40;
       return "フルハウス";
     } else if (result == 5) {
+      score += 30;
       return "フラッシュ";
     } else if (result == 6) {
+      score += 25;
       return "ストレート";
     } else if (result == 7) {
+      score += 20;
       return "スリーカード";
     } else if (result == 8) {
+      score += 10;
       return "ツーペア";
     } else if (result == 9) {
+      score += 5;
       return "ワンペア";
     } else if (result == 10) {
+      score += 0;
       return "ノーペア";
     } else {
       return "ERROR";
