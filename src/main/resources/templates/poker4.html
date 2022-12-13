@@ -10,6 +10,12 @@
     </ul>
   </div>
   </p>
+  <form action="/poker4" method="post">
+    <input type="submit" value="確定" />
+  </form>
+  <p th:if="${handname}">
+    [[${handname}]]
+  </p>
 </body>
 
 </html>
