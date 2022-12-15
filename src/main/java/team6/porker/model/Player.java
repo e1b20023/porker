@@ -281,7 +281,20 @@ public class Player {
         int tmp = deck.get(i).getDeckid();
         this.hand.add(tmp);
       }
+      for (int j = 0; j < 5; j++) {
+        deck.remove(0);
+      }
     }
+
+    sort(this.hand);
+  }
+
+  public void Exchange(int index, ArrayList<Deck> deck) {
+
+    this.hand.remove(index);
+    int tmp = deck.get(0).getDeckid();
+    this.hand.add(tmp);
+    deck.remove(0);
 
     sort(this.hand);
   }
