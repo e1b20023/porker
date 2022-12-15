@@ -2,13 +2,14 @@
 <html>
 
 <body>
-  <p th:if="${Hands}">
-
-  <div th:each="Hand,stat:${Hands}">
-    <ul>
-      <li>[[${Hand.hand}]]</li>
-    </ul>
-  </div>
+  <p th:if="${Hand1}">
+    <img src="image/101.png">
+  </p>
+  <p th:if="${Hand2}"></p>
+  [[${Hand2}]]
+  [[${Hand3}]]
+  [[${Hand4}]]
+  [[${Hand5}]]
   </p>
   <form action="/poker4" method="post">
     <input type="submit" value="確定" />

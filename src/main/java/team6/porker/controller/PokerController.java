@@ -47,7 +47,11 @@ public class PokerController {
       // user1copy.add(user1.get(i).getHand());
     }
 
-    model.addAttribute("Hands", user1);
+    model.addAttribute("Hand1", user1.getHand().get(0));
+    model.addAttribute("Hand2", user1.getHand().get(1));
+    model.addAttribute("Hand3", user1.getHand().get(2));
+    model.addAttribute("Hand4", user1.getHand().get(3));
+    model.addAttribute("Hand5", user1.getHand().get(4));
     return "poker4.html";
   }
 
