@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
+
+
 
 <body>
   <p th:if="${Hand1}">
   <div>
-    <img width="20%" th:src="@{image/(${Hand1}).png}">
-    [[${Hand2}]]
-    [[${Hand3}]]
-    [[${Hand4}]]
-    [[${Hand5}]]
+    <img width="10%" th:src="@{image/{Hand1}.png (Hand1=${Hand1})}">
+    <img width="10%" th:src="@{image/{Hand2}.png (Hand2=${Hand2})}">
+    <img width="10%" th:src="@{image/{Hand3}.png (Hand3=${Hand3})}">
+    <img width="10%" th:src="@{image/{Hand4}.png (Hand4=${Hand4})}">
+    <img width="10%" th:src="@{image/{Hand5}.png (Hand5=${Hand5})}">
+
   </div>
   <div>
     <form action="/exchange" method="post">
