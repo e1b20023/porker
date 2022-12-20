@@ -291,12 +291,10 @@ public class Player {
 
   public void Exchange(int index, ArrayList<Deck> deck) {
 
-    this.hand.remove(index);
     int tmp = deck.get(0).getDeckid();
     this.hand.add(tmp);
     deck.remove(0);
 
-    sort(this.hand);
   }
 
   // public void PrintHand()
