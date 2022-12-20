@@ -94,6 +94,8 @@ public class PokerController {
       user1.Exchange(4, ids);
     }
 
+    user1.sort(user1.getHand());
+
     model.addAttribute("Hand1", user1.getHand().get(0));
     model.addAttribute("Hand2", user1.getHand().get(1));
     model.addAttribute("Hand3", user1.getHand().get(2));
