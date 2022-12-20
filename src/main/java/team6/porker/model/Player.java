@@ -292,7 +292,7 @@ public class Player {
   public void Exchange(int index, ArrayList<Deck> deck) {
 
     int tmp = deck.get(0).getDeckid();
-    this.hand.add(tmp);
+    this.hand.add(index, tmp);
     deck.remove(0);
 
   }

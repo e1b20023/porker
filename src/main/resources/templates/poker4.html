@@ -4,7 +4,13 @@
 
 
 <body>
-  <p th:if="${Hand1}">
+  <p th:if="${Hands}">
+    <div th:each="Hand,stat:${Hands}">
+      [[${Hand}]]
+    </div>
+  </p>
+
+  <!-- <p th:if="${Hand1}">
   <div>
     <img width="10%" th:src="@{image/{Hand1}.png (Hand1=${Hand1})}">
     <img width="10%" th:src="@{image/{Hand2}.png (Hand2=${Hand2})}">
@@ -23,7 +29,7 @@
       <input type="submit" value="交換" />
     </form>
   </div>
-  </p>
+  </p> -->
   <form action="/poker4" method="post">
     <input type="submit" value="確定" />
   </form>
