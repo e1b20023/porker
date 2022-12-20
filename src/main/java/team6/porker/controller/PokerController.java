@@ -45,10 +45,13 @@ public class PokerController {
     }
     // Player user1 = new Player();
     user1.Distribute(ids);
-    for (int i = 0; i < 5; i++) {
+    ArrayList<Deck> IDS = new ArrayList<Deck>();
+    for (int i = 0; i < 52; i++) {
+      IDS.get(i).setDeckid(ids.get(i).getDeckid());
       // user1copy.add(user1.get(i).getHand());
     }
 
+    model.addAttribute("Hands", IDS);
     model.addAttribute("Hand1", user1.getHand().get(0));
     model.addAttribute("Hand2", user1.getHand().get(1));
     model.addAttribute("Hand3", user1.getHand().get(2));
