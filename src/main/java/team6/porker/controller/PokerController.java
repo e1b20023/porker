@@ -36,6 +36,7 @@ public class PokerController {
   @GetMapping("/poker4")
   public String poker41(ModelMap model) {
     ids = DeckMapper.selectAllByDeckid();
+    System.out.printf("%d\n", ids.size());
     // user1.getHand().clear();
     for (int i = 0; i < ids.size(); ++i) {
       int rnd = (int) (Math.random() * (double) ids.size());
@@ -43,15 +44,14 @@ public class PokerController {
       ids.get(i).setDeckid(ids.get(rnd).getDeckid());
       ids.get(rnd).setDeckid(w);
     }
-    // Player user1 = new Player();
-    user1.Distribute(ids);
-    ArrayList<Deck> IDS = new ArrayList<Deck>();
-    for (int i = 0; i < 52; i++) {
-      IDS.get(i).setDeckid(ids.get(i).getDeckid());
-      // user1copy.add(user1.get(i).getHand());
-    }
+    Player user1 = new Player();
+    // Player test = new Player();
+    // test.Distribute2(ids);
 
-    model.addAttribute("Hands", IDS);
+    user1.Distribute(ids);
+    //System.out.printf("%d\n", ids.size());
+
+    // model.addAttribute("Hands", test.getHand());
     model.addAttribute("Hand1", user1.getHand().get(0));
     model.addAttribute("Hand2", user1.getHand().get(1));
     model.addAttribute("Hand3", user1.getHand().get(2));
@@ -81,15 +81,20 @@ public class PokerController {
       @RequestParam(value = "h4", required = false) boolean h4,
       @RequestParam(value = "h5", required = false) boolean h5) {
 
+    for (int i = 0; i < 5; i++) {
+      System.out.printf("%d\n", user1.getHand().get(i));
+    }
     if (h1) {
       user1.Exchange(0, ids);
     }
     if (h2) {
       user1.Exchange(1, ids);
     }
+    //System.out.printf("%d\n", ids.size());
     if (h3) {
       user1.Exchange(2, ids);
     }
+    System.out.printf("%d\n", ids.size());
     if (h4) {
       user1.Exchange(3, ids);
     }
