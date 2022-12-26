@@ -289,10 +289,32 @@ public class Player {
     sort(this.hand);
   }
 
+  public void Distribute2(ArrayList<Deck> ids) {
+    for (int i = 0; i < 52; i++) {
+      int tmp = ids.get(i).getDeckid();
+      this.hand.add(tmp);
+    }
+
+    sort(this.hand);
+  }
+
+  public void Distribute3(ArrayList<Deck> ids) {
+    for (int i = 0; i < 6; i++) {
+      int tmp = ids.get(i).getDeckid();
+      this.hand.add(tmp);
+    }
+
+    sort(this.hand);
+  }
+
   public void Exchange(int index, ArrayList<Deck> deck) {
 
     int tmp = deck.get(0).getDeckid();
-    this.hand.add(index, tmp);
+    this.hand.remove(index);
+    System.out.printf("%d\n", deck.size());
+    //System.out.printf("%d\n", this.hand.get(index));
+    this.hand.add(tmp);
+    System.out.printf("%d\n", deck.size());
     deck.remove(0);
 
   }
