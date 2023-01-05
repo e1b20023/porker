@@ -4,8 +4,13 @@
 <body>
   <h1>Hi [[${name}]]</h1>
 
-  <h3><a href="">2人</a></h3>
-  <h3><a href="">3人</a></h3>
+  <h2>ログインしているユーザ</h2>
+  <div th:if="${room}">
+    <ul>
+      <li th:each="user : ${room.users}">[[${user}]]</li>
+    </ul>
+  </div>
+
   <h3><a href="/poker4">4人</a></h3>
 </body>
 
