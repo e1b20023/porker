@@ -307,14 +307,14 @@ public class Player {
     sort(this.hand);
   }
 
-  public void Exchange(int index, ArrayList<Deck> deck) {
+  public void Exchange(int a, ArrayList<Deck> deck) {
 
     int tmp = deck.get(0).getDeckid();
-    this.hand.remove(index);
-    System.out.printf("%d\n", deck.size());
-    //System.out.printf("%d\n", this.hand.get(index));
-    this.hand.add(tmp);
-    System.out.printf("%d\n", deck.size());
+    this.hand.remove(a);
+    System.out.printf("山札：%d\n", deck.size());
+    System.out.printf("手札：%d\n", this.hand.size());
+    // System.out.printf("%d\n", this.hand.get(index));
+    this.hand.add(a, tmp);
     deck.remove(0);
 
   }
