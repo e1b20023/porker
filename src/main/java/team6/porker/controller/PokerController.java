@@ -21,6 +21,9 @@ import team6.porker.model.Player;
 @Controller
 public class PokerController {
   Player user1 = new Player();
+  Player user2 = new Player();
+  Player user3 = new Player();
+  Player user4 = new Player();
   ArrayList<Deck> ids = new ArrayList<Deck>();
 
   @Autowired
@@ -63,12 +66,36 @@ public class PokerController {
       }
     }
 
-    user1.Distribute(sDeckMapper);
-    model.addAttribute("Hand1", user1.getHand().get(0));
-    model.addAttribute("Hand2", user1.getHand().get(1));
-    model.addAttribute("Hand3", user1.getHand().get(2));
-    model.addAttribute("Hand4", user1.getHand().get(3));
-    model.addAttribute("Hand5", user1.getHand().get(4));
+    ArrayList<Player> players = playerMapper.selectAllPlayer();
+    if (players.size() == 1) {
+      user1.Distribute(sDeckMapper);
+      model.addAttribute("Hand1", user1.getHand().get(0));
+      model.addAttribute("Hand2", user1.getHand().get(1));
+      model.addAttribute("Hand3", user1.getHand().get(2));
+      model.addAttribute("Hand4", user1.getHand().get(3));
+      model.addAttribute("Hand5", user1.getHand().get(4));
+    } else if (players.size() == 2) {
+      user2.Distribute(sDeckMapper);
+      model.addAttribute("Hand1", user2.getHand().get(0));
+      model.addAttribute("Hand2", user2.getHand().get(1));
+      model.addAttribute("Hand3", user2.getHand().get(2));
+      model.addAttribute("Hand4", user2.getHand().get(3));
+      model.addAttribute("Hand5", user2.getHand().get(4));
+    } else if (players.size() == 3) {
+      user3.Distribute(sDeckMapper);
+      model.addAttribute("Hand1", user3.getHand().get(0));
+      model.addAttribute("Hand2", user3.getHand().get(1));
+      model.addAttribute("Hand3", user3.getHand().get(2));
+      model.addAttribute("Hand4", user3.getHand().get(3));
+      model.addAttribute("Hand5", user3.getHand().get(4));
+    } else if (players.size() == 4) {
+      user4.Distribute(sDeckMapper);
+      model.addAttribute("Hand1", user4.getHand().get(0));
+      model.addAttribute("Hand2", user4.getHand().get(1));
+      model.addAttribute("Hand3", user4.getHand().get(2));
+      model.addAttribute("Hand4", user4.getHand().get(3));
+      model.addAttribute("Hand5", user4.getHand().get(4));
+    }
     return "poker4.html";
   }
 
