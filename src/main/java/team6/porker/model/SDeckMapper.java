@@ -12,11 +12,11 @@ public interface SDeckMapper {
   @Select("SELECT num from sdeck LIMIT 1")
   int selectBynumber1();
 
-  @Insert("INSERT INTO sdeck (num) VALUES (#{number});")
-  void insertsdecknumber(int number);
+  @Insert("INSERT INTO sdeck (num) VALUES (#{num});")
+  void insertsdecknumber(int num);
 
-  @Delete("DELETE FROM sdeck WHERE num =#{number}")
-  boolean deleteBynumber1(int number);
+  @Delete("DELETE FROM sdeck WHERE num =#{num}")
+  boolean deleteBynumber1(int num);
 
   @Select("SELECT number from sdeck")
   ArrayList<SDeck> selectAllSDecks();

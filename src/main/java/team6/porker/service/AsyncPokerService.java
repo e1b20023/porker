@@ -24,8 +24,8 @@ public class AsyncPokerService {
   SDeckMapper sDeckMapper;
 
   @Transactional
-  public void syncdeletesDeck(int number) {
-    sDeckMapper.deleteBynumber1(number);
+  public void syncdeletesDeck(int num) {
+    sDeckMapper.deleteBynumber1(num);
     this.dbUpdated = true;
   }
 
