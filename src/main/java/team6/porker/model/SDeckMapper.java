@@ -18,7 +18,7 @@ public interface SDeckMapper {
   @Delete("DELETE FROM sdeck WHERE num =#{num}")
   boolean deleteBynumber1(int num);
 
-  @Select("SELECT number from sdeck")
+  @Select("SELECT num from sdeck")
   ArrayList<SDeck> selectAllSDecks();
 
   @Select("SELECT id from poker4 WHERE id = 1")
