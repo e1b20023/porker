@@ -9,23 +9,12 @@
       sse.onmessage = function (event) {
         console.log("sse.onmessage")
         console.log(event.data);
-        var fruits_list = JSON.parse(event.data);
-        var fruits_table = "";
-        console.log(fruits_table);
-        var tbody = document.getElementById("fruits_list");
-        tbody.innerHTML = fruits_table;
       }
     }
   </script>
 </head>
 
 <body>
-  <!-- <p th:if="${Hands}">
-    <div th:each="Hand,stat:${Hands}">
-      [[${Hand}]]
-    </div>
-  </p> -->
-
   <p th:if="${Hand1}">
   <div>
     <img width="10%" th:src="@{image/{Hand1}.png (Hand1=${Hand1})}">
@@ -42,19 +31,16 @@
       <input type="checkbox" name="h3" />
       <input type="checkbox" name="h4" />
       <input type="checkbox" name="h5" />
+      <input type="text" name="id" />
       <input type="submit" value="交換" />
     </form>
+    <p>あなたのIDは[[${id}]]です。</p>
   </div>
   </p>
-  <form action="/poker4" method="post">
+  <form action="/result" method="post">
+    <input type="text" name="id" />
     <input type="submit" value="確定" />
   </form>
-  <p th:if="${handname}">
-    [[${handname}]]
-  </p>
-  <p th:if="${score}">
-    [[${score}]]
-  </p>
 </body>
 
 </html>

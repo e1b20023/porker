@@ -1,6 +1,5 @@
 package team6.porker.controller;
 
-import java.security.Principal;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +41,27 @@ public class PokerController {
   @PostMapping("/start")
   public String lobby(@RequestParam String name, ModelMap model) {
     playerMapper.insertPlayerName(name);
+    int loginid=playerMapper.selectPlayerId(name);
+    if (loginid == 1) {
+      user1.setId(loginid);
+    }
+    if (loginid == 2) {
+      user2.setId(loginid);
+    }
+    if (loginid == 3) {
+      user3.setId(loginid);
+    }
+    if (loginid == 4) {
+      user4.setId(loginid);
+    }
+    ArrayList<Player> nops = playerMapper.selectAllPlayer();
+    model.addAttribute("nops", nops);
     model.addAttribute("name", name);
     return "start.html";
   }
 
-  @GetMapping("/poker4")
-  public String poker41(ModelMap model) {
+  @PostMapping("/poker4")
+  public String poker41(@RequestParam String id, ModelMap model) {
     Deck d = new Deck(1);
     this.ids.add(d);
     if (ids.size() == 1) {
@@ -67,29 +81,28 @@ public class PokerController {
       }
     }
 
-    ArrayList<Player> players = playerMapper.selectAllPlayer();
-    if (players.size() == 1) {
+    if (id.equals("1")) {
       user1.Distribute(sDeckMapper);
       model.addAttribute("Hand1", user1.getHand().get(0));
       model.addAttribute("Hand2", user1.getHand().get(1));
       model.addAttribute("Hand3", user1.getHand().get(2));
       model.addAttribute("Hand4", user1.getHand().get(3));
       model.addAttribute("Hand5", user1.getHand().get(4));
-    } else if (players.size() == 2) {
+    } else if (id.equals("2")) {
       user2.Distribute(sDeckMapper);
       model.addAttribute("Hand1", user2.getHand().get(0));
       model.addAttribute("Hand2", user2.getHand().get(1));
       model.addAttribute("Hand3", user2.getHand().get(2));
       model.addAttribute("Hand4", user2.getHand().get(3));
       model.addAttribute("Hand5", user2.getHand().get(4));
-    } else if (players.size() == 3) {
+    } else if (id.equals("3")) {
       user3.Distribute(sDeckMapper);
       model.addAttribute("Hand1", user3.getHand().get(0));
       model.addAttribute("Hand2", user3.getHand().get(1));
       model.addAttribute("Hand3", user3.getHand().get(2));
       model.addAttribute("Hand4", user3.getHand().get(3));
       model.addAttribute("Hand5", user3.getHand().get(4));
-    } else if (players.size() == 4) {
+    } else if (id.equals("4")) {
       user4.Distribute(sDeckMapper);
       model.addAttribute("Hand1", user4.getHand().get(0));
       model.addAttribute("Hand2", user4.getHand().get(1));
@@ -97,35 +110,62 @@ public class PokerController {
       model.addAttribute("Hand4", user4.getHand().get(3));
       model.addAttribute("Hand5", user4.getHand().get(4));
     }
+
+    model.addAttribute("id", id);
     return "poker4.html";
   }
 
-  @PostMapping("/poker4")
-  public String poker42(ModelMap model) {
-    int result;
-    int score;
+  @PostMapping("/result")
+  public String poker42(@RequestParam String id, ModelMap model) {
 
-    String name = user1.getplayername();
-    result = user1.getPokerHand(user1.getHand());
-    String handname = user1.HandName(result);
-    model.addAttribute("handname", handname);
-    score = user1.getScore();
-    playerMapper.updateResult(name, result, score);
-    model.addAttribute("score", score);
-    return "poker4.html";
+    if (id.equals("1")) {
+      int result = user1.getPokerHand(user1.getHand());
+      String handname = user1.HandName(result);
+      model.addAttribute("handname", handname);
+      int score = user1.getScore();
+      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      model.addAttribute("score", score);
+    }
+    if (id.equals("2")) {
+      int result = user2.getPokerHand(user2.getHand());
+      String handname = user2.HandName(result);
+      model.addAttribute("handname", handname);
+      int score = user2.getScore();
+      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      model.addAttribute("score", score);
+    }
+    if (id.equals("3")) {
+      int result = user3.getPokerHand(user3.getHand());
+      String handname = user3.HandName(result);
+      model.addAttribute("handname", handname);
+      int score = user3.getScore();
+      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      model.addAttribute("score", score);
+    }
+    if (id.equals("4")) {
+      int result = user4.getPokerHand(user4.getHand());
+      String handname = user4.HandName(result);
+      model.addAttribute("handname", handname);
+      int score = user4.getScore();
+      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      model.addAttribute("score", score);
+    }
+
+    ArrayList<Player> players = playerMapper.selectAllPlayer();
+    model.addAttribute("players", players);
+
+    return "result.html";
   }
 
   @RequestMapping("/exchange")
-  public String exchange(ModelMap model, Principal prin,
+  public String exchange(ModelMap model, @RequestParam String id,
       @RequestParam(value = "h1", required = false) boolean h1,
       @RequestParam(value = "h2", required = false) boolean h2,
       @RequestParam(value = "h3", required = false) boolean h3,
       @RequestParam(value = "h4", required = false) boolean h4,
       @RequestParam(value = "h5", required = false) boolean h5) {
 
-    String name = prin.getName();
-
-    if (name.equals(user1.getplayername())) {
+    if (id.equals("1")) {
       if (h1) {
         user1.Exchange(0, sDeckMapper);
       }
@@ -149,7 +189,7 @@ public class PokerController {
       model.addAttribute("Hand4", user1.getHand().get(3));
       model.addAttribute("Hand5", user1.getHand().get(4));
     }
-    if (name.equals(user2.getplayername())) {
+    if (id.equals("2")) {
       if (h1) {
         user2.Exchange(0, sDeckMapper);
       }
@@ -173,7 +213,7 @@ public class PokerController {
       model.addAttribute("Hand4", user2.getHand().get(3));
       model.addAttribute("Hand5", user2.getHand().get(4));
     }
-    if (name.equals(user3.getplayername())) {
+    if (id.equals("3")) {
       if (h1) {
         user3.Exchange(0, sDeckMapper);
       }
@@ -197,7 +237,7 @@ public class PokerController {
       model.addAttribute("Hand4", user3.getHand().get(3));
       model.addAttribute("Hand5", user3.getHand().get(4));
     }
-    if (name.equals(user4.getplayername())) {
+    if (id.equals("4")) {
       if (h1) {
         user4.Exchange(0, sDeckMapper);
       }
@@ -221,6 +261,8 @@ public class PokerController {
       model.addAttribute("Hand4", user4.getHand().get(3));
       model.addAttribute("Hand5", user4.getHand().get(4));
     }
+
+    model.addAttribute("id", id);
     return "poker4.html";
   }
 
