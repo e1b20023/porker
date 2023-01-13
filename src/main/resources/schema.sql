@@ -1,6 +1,6 @@
 CREATE TABLE player (
   id IDENTITY,
-  Playername VARCHAR NOT NULL,
+  playername VARCHAR NOT NULL,
   hand VARCHAR,
   score INT
 );

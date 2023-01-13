@@ -9,12 +9,15 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface PlayerMapper {
-  @Insert("INSERT INTO player (Playername) VALUES (#{name});")
+  @Insert("INSERT INTO player (playername) VALUES (#{name});")
   void insertPlayerName(String name);
 
-  @Update("UPDATE player SET hand = #{result}, score = #{score} WHERE playername = #{name}")
-  void updateResult(String name, int result, int score);
+  @Update("UPDATE player SET hand = #{result}, score = #{score} WHERE id = #{id}")
+  void updateResult(int id, int result, int score);
 
   @Select("SELECT * FROM player")
   ArrayList<Player> selectAllPlayer();
+
+  @Select("SELECT id FROM player WHERE playername = #{loginuser}")
+  int selectPlayerId(String loginuser);
 }

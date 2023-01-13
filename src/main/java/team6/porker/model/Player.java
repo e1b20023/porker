@@ -3,6 +3,7 @@ package team6.porker.model;
 import java.util.ArrayList;
 
 public class Player {
+  int id;
   String playername;
   ArrayList<Integer> hand = new ArrayList<Integer>();
   int score = 0;
@@ -293,6 +294,14 @@ public class Player {
     this.hand.remove(index);
     this.hand.add(index, tmp);
     deck.deleteBynumber1(tmp);
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getplayername() {

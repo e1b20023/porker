@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
+
+<head>
+  <meta charset="utf-8">
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/push');
+      sse.onmessage = function (event) {
+        console.log("sse.onmessage")
+        console.log(event.data);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <p th:if="${handname}">
+    [[${handname}]]
+  </p>
+  <p th:if="${score}">
+    あなたの点数は[[${score}]]点です
+  </p>
+
+  <ul>
+    <li th:each="player : ${players}" >
+      の役は"[[${player.handname}]]"で、[[${player.score}]]点です
+    </li>
+  </ul>
+
+</body>
