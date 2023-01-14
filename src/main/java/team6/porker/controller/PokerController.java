@@ -41,7 +41,7 @@ public class PokerController {
   @PostMapping("/start")
   public String lobby(@RequestParam String name, ModelMap model) {
     playerMapper.insertPlayerName(name);
-    int loginid=playerMapper.selectPlayerId(name);
+    int loginid = playerMapper.selectPlayerId(name);
     if (loginid == 1) {
       user1.setId(loginid);
     }
@@ -55,7 +55,20 @@ public class PokerController {
       user4.setId(loginid);
     }
     ArrayList<Player> nops = playerMapper.selectAllPlayer();
-    model.addAttribute("nops", nops);
+    model.addAttribute("playerid1", nops.get(0).getId());
+    model.addAttribute("playername1", nops.get(0).getplayername());
+    if (nops.size() >= 2) {
+      model.addAttribute("playerid2", nops.get(1).getId());
+      model.addAttribute("playername2", nops.get(1).getplayername());
+    }
+    if (nops.size() >= 3) {
+      model.addAttribute("playerid3", nops.get(2).getId());
+      model.addAttribute("playername3", nops.get(2).getplayername());
+    }
+    if (nops.size() >= 4) {
+      model.addAttribute("playerid4", nops.get(3).getId());
+      model.addAttribute("playername4", nops.get(3).getplayername());
+    }
     model.addAttribute("name", name);
     return "start.html";
   }
@@ -120,39 +133,76 @@ public class PokerController {
 
     if (id.equals("1")) {
       int result = user1.getPokerHand(user1.getHand());
-      String handname = user1.HandName(result);
+      String handname = user1.getHandname();
+      if (user1.getAppear() == false) {
+        handname = user1.HandName(result);
+        user1.setHandname(handname);
+      }
       model.addAttribute("handname", handname);
       int score = user1.getScore();
-      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      playerMapper.updateResult(Integer.parseInt(id), handname, score);
       model.addAttribute("score", score);
     }
     if (id.equals("2")) {
       int result = user2.getPokerHand(user2.getHand());
-      String handname = user2.HandName(result);
+      String handname = user2.getHandname();
+      if (user2.getAppear() == false) {
+        handname = user2.HandName(result);
+        user2.setHandname(handname);
+      }
       model.addAttribute("handname", handname);
       int score = user2.getScore();
-      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      playerMapper.updateResult(Integer.parseInt(id), handname, score);
       model.addAttribute("score", score);
     }
     if (id.equals("3")) {
       int result = user3.getPokerHand(user3.getHand());
-      String handname = user3.HandName(result);
+      String handname = user3.getHandname();
+      if (user3.getAppear() == false) {
+        handname = user3.HandName(result);
+        user3.setHandname(handname);
+      }
       model.addAttribute("handname", handname);
       int score = user3.getScore();
-      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      playerMapper.updateResult(Integer.parseInt(id), handname, score);
       model.addAttribute("score", score);
     }
     if (id.equals("4")) {
       int result = user4.getPokerHand(user4.getHand());
-      String handname = user4.HandName(result);
+      String handname = user4.getHandname();
+      if (user4.getAppear() == false) {
+        handname = user4.HandName(result);
+        user4.setHandname(handname);
+      }
       model.addAttribute("handname", handname);
       int score = user4.getScore();
-      playerMapper.updateResult(Integer.parseInt(id), result, score);
+      playerMapper.updateResult(Integer.parseInt(id), handname, score);
       model.addAttribute("score", score);
     }
 
-    ArrayList<Player> players = playerMapper.selectAllPlayer();
-    model.addAttribute("players", players);
+    ArrayList<Player> nops = playerMapper.selectAllPlayer();
+    model.addAttribute("ID1", nops.get(0).getId());
+    model.addAttribute("name1", nops.get(0).getplayername());
+    model.addAttribute("handname1", nops.get(0).getHandname());
+    model.addAttribute("score1", nops.get(0).getScore());
+    if (nops.size() >= 2) {
+      model.addAttribute("ID2", nops.get(1).getId());
+      model.addAttribute("name2", nops.get(1).getplayername());
+      model.addAttribute("handname2", nops.get(1).getHandname());
+      model.addAttribute("score2", nops.get(1).getScore());
+    }
+    if (nops.size() >= 3) {
+      model.addAttribute("ID3", nops.get(2).getId());
+      model.addAttribute("name3", nops.get(2).getplayername());
+      model.addAttribute("handname3", nops.get(2).getHandname());
+      model.addAttribute("score3", nops.get(2).getScore());
+    }
+    if (nops.size() >= 4) {
+      model.addAttribute("ID4", nops.get(3).getId());
+      model.addAttribute("name4", nops.get(3).getplayername());
+      model.addAttribute("handname4", nops.get(3).getHandname());
+      model.addAttribute("score4", nops.get(3).getScore());
+    }
 
     return "result.html";
   }

@@ -12,8 +12,8 @@ public interface PlayerMapper {
   @Insert("INSERT INTO player (playername) VALUES (#{name});")
   void insertPlayerName(String name);
 
-  @Update("UPDATE player SET hand = #{result}, score = #{score} WHERE id = #{id}")
-  void updateResult(int id, int result, int score);
+  @Update("UPDATE player SET handname = #{handname}, score = #{score} WHERE id = #{id}")
+  void updateResult(int id, String handname, int score);
 
   @Select("SELECT * FROM player")
   ArrayList<Player> selectAllPlayer();

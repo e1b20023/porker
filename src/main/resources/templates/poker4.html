@@ -15,6 +15,8 @@
 </head>
 
 <body>
+  <p>あなたのIDは[[${id}]]です。</p>
+  <p>交換したいカードのチェックをして、あなたのIDを"半角で"入力してからボタンを押してください。</p>
   <p th:if="${Hand1}">
   <div>
     <img width="10%" th:src="@{image/{Hand1}.png (Hand1=${Hand1})}">
@@ -34,9 +36,9 @@
       <input type="text" name="id" />
       <input type="submit" value="交換" />
     </form>
-    <p>あなたのIDは[[${id}]]です。</p>
   </div>
   </p>
+  <p>あなたのIDを"半角で"入力してから、ボタンを押してください。</p>
   <form action="/result" method="post">
     <input type="text" name="id" />
     <input type="submit" value="確定" />
