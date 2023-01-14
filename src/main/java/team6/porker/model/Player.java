@@ -5,8 +5,10 @@ import java.util.ArrayList;
 public class Player {
   int id;
   String playername;
-  ArrayList<Integer> hand = new ArrayList<Integer>();
+  String handname;
   int score = 0;
+  boolean appear = false;
+  ArrayList<Integer> hand = new ArrayList<Integer>();
 
   // エラー
   static final int ERROR = 0;
@@ -243,33 +245,43 @@ public class Player {
   public String HandName(int result) {
     if (result == 1) {
       score += 1000;
+      appear = true;
       return "ロイヤルストレートフラッシュ";
     } else if (result == 2) {
       score += 100;
+      appear = true;
       return "ストレートフラッシュ";
     } else if (result == 3) {
       score += 50;
+      appear = true;
       return "フォーカード";
     } else if (result == 4) {
       score += 40;
+      appear = true;
       return "フルハウス";
     } else if (result == 5) {
       score += 30;
+      appear = true;
       return "フラッシュ";
     } else if (result == 6) {
       score += 25;
+      appear = true;
       return "ストレート";
     } else if (result == 7) {
       score += 20;
+      appear = true;
       return "スリーカード";
     } else if (result == 8) {
       score += 10;
+      appear = true;
       return "ツーペア";
     } else if (result == 9) {
       score += 5;
+      appear = true;
       return "ワンペア";
     } else if (result == 10) {
       score += 0;
+      appear = true;
       return "ノーペア";
     } else {
       return "ERROR";
@@ -326,5 +338,21 @@ public class Player {
 
   public void setScore(int score) {
     this.score = score;
+  }
+
+  public String getHandname() {
+    return handname;
+  }
+
+  public void setHandname(String handname) {
+    this.handname = handname;
+  }
+
+  public boolean getAppear() {
+    return appear;
+  }
+
+  public void setAppear(boolean appear) {
+    this.appear = appear;
   }
 }
