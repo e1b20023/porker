@@ -6,5 +6,5 @@
 - gradleを利用してアプリケーションを公開
 
 ## <Readme一覧>
-- [セットアップ](https://github.com/e1b20023/porker/manual/setUpReadme.md)
-- [ユーザーマニュアル](https://github.com/e1b20023/porker/manual/pokerReadme.md)
+- [セットアップ](https://github.com/e1b20023/porker/blob/main/manual/setUpReadme.md)
+- [ユーザーマニュアル](https://github.com/e1b20023/porker/blob/main/manual/pokerReadme.md)
